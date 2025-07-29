@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Réserver une table{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/reservation.css' %}">
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Réserver une Table</h2>
+    <form method="post" class="mx-auto" style="max-width: 500px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary w-100">Confirmer la réservation</button>
+    </form>
+</div>
+{% endblock %}

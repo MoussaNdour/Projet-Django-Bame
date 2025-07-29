@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Carte des livraisons</h2>
+  <div id="map" style="height: 500px;"></div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}"></script>
+<script>
+  function initMap() {
+    const center = { lat: 14.6928, lng: -17.4467 }; // Dakar par défaut
+    const map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: center
+    });
+
+    {% for adresse in adresses %}
+      new google.maps.Marker({
+        position: { lat: {{ adresse.latitude }}, lng: {{ adresse.longitude }} },
+        map: map,
+        title: "{{ adresse.nom_client }}",
+        icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+      });
+    {% endfor %}
+
+    {% for livreur in livreurs %}
+      new google.maps.Marker({
+        position: { lat: {{ livreur.position_lat }}, lng: {{ livreur.position_long }} },
+        map: map,
+        title: "{{ livreur.nom }} (Livreur)",
+        icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+      });
+    {% endfor %}
+  }
+
+  window.onload = initMap;
+</script>
+{% endblock %}
