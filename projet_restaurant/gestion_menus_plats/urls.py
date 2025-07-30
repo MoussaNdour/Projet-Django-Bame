@@ -5,4 +5,5 @@ app_name = 'gestion_menus_plats'
 
 urlpatterns = [
     path('plats/', views.plats, name='plats'),
+    path('plats/ajouter/', views.ajouter_plat, name='ajouter_plat'),
 ]
