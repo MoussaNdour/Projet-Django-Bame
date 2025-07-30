@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'gestion_menus_plats/base.html' %}
 {% load static %}
 
 {% block title %}Menu - Nos Délices{% endblock %}
@@ -7,7 +7,7 @@
 <div class="container py-5">
     <h2 class="text-center text-success mb-4">🍴 Notre Menu Gourmand</h2>
 
-    {% for label, label_fr in [('entree', 'Entrées'), ('plat_resistant', 'Plats Résistants'), ('dessert', 'Desserts')] %}
+    {% for label, label_fr in categories %}
         <h3 class="mt-5 mb-3 text-primary">{{ label_fr }}</h3>
         <div class="row">
             {% for plat in plats %}

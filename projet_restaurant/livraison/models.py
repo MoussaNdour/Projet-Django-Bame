@@ -3,8 +3,8 @@ from django.db import models
 class Adresse(models.Model):
     nom_client = models.CharField(max_length=100)
     adresse = models.CharField(max_length=255)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     date_ajout = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

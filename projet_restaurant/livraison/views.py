@@ -16,7 +16,7 @@ def ajouter_adresse(request):
         form = AdresseForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('carte_livraison')
+            return redirect('livraison:carte_livraison')
     else:
         form = AdresseForm()
     return render(request, 'livraison/ajouter_adresse.html', {'form': form})

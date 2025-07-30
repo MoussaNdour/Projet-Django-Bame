@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'projet_restaurant.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'restaurant',
+        'USER':'moussandour01',
+        'PASSWORD':'20010831A',
+        'HOST':'localhost',
+        'PORT':5432
     }
 }
 
@@ -144,3 +148,4 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/auth/connexion/'
 
+GOOGLE_MAPS_API_KEY = 'AIzaSyAwNs6UKlqZbVzL4MV7ICnvh4p2MuLwF9I'
