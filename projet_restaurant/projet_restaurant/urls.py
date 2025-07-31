@@ -6,8 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accueil.urls' )),
-    path('reservation/', include('reservation_en_ligne.urls')),
-    path('commandes/', include('gestion_commande.urls')),
+    path('reservation/', include('reservation_en_ligne.urls', namespace='reservation_en_ligne')),
+    path('commandes/', include('gestion_commande.urls', namespace='gestion_commande')),
     path('menu/', include('gestion_menus_plats.urls')),
     path('auth/', include('authentification.urls', namespace='authentification')),
     path('livraison/', include('livraison.urls', namespace='livraison')),

@@ -14,4 +14,9 @@ def passer_commande(request):
     else:
         form = LigneCommandeForm()
     
-    return render(request, 'gestion_commandes/commander.html', {'form': form})
+    return render(request, 'gestion_commande/commander.html', {'form': form})
+
+def commandes(request):
+    commandes=Commande.objects.all()
+
+    return render(request,'gestion_commande/commandes.html', {'commandes':commandes})

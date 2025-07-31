@@ -20,3 +20,5 @@ def ajouter_adresse(request):
     else:
         form = AdresseForm()
     return render(request, 'livraison/ajouter_adresse.html', {'form': form})
+
+

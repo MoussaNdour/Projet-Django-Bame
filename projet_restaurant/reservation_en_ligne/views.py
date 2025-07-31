@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import ReservationForm
-from .models import Table
+from .forms import ReservationForm, TableForm
+from .models import Table, Reservation
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -21,3 +21,28 @@ def reserver(request):
     else:
         form = ReservationForm()
     return render(request, 'reservation_en_ligne/reserver.html', {'form': form})
+
+@login_required
+def ajouter_table(request):
+    if request.method == 'POST':
+        if request.user.role=='client':
+            return redirect('acceuil:index')
+        else:
+            form=TableForm(request.POST)
+            if form.is_valid():
+                table=form.save(commit=False)
+                table.save()
+                return render(request, 'reservation_en_ligne/ajouter_table.html', {'form': form})
+    else:
+        if request.user.role=='client':
+            return redirect('acceuil:index')
+        else:
+            form=TableForm()
+            return render(request, 'reservation_en_ligne/ajouter_table.html', {'form': form})
+    
+
+def reservations(request):
+    reservations = Reservation.objects.select_related('client', 'table').order_by('-date_reservation')
+    return render(request, 'reservation_en_ligne/reservations.html', {'reservations': reservations})
+
+    

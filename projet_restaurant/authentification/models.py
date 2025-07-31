@@ -10,3 +10,12 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+    
+    @property
+    def is_personnel(self):
+        return self.role == 'personnel'
+    
+    @property
+    def is_client(self):
+        return self.role == 'client'
+    

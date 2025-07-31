@@ -1,12 +1,12 @@
 {% extends 'reservation_en_ligne/base.html' %}
-{% load static %}
+
 
 {% block title %}Réserver une table{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/reservation.css' %}">
 
-<div class="container py-5">
+
+<div class="container py-5 mt-5 pt-5 w-50">
     <h2 class="text-center mb-4">Réserver une Table</h2>
     <form method="post" class="mx-auto" style="max-width: 500px;">
         {% csrf_token %}
