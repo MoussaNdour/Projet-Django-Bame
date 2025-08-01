@@ -10,7 +10,7 @@ class Plat(models.Model):
     nom = models.CharField(max_length=100)
     description = models.TextField()
     categorie = models.CharField(max_length=20, choices=CATEGORIES, default='plat_resistant')
-    prix = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
+    prix = models.DecimalField(max_digits=6, decimal_places=2, default=5000)
     est_epuise = models.BooleanField(default=False)
     est_specialite = models.BooleanField(default=False)
     image = models.ImageField(upload_to='plats/', blank=True, null=True)

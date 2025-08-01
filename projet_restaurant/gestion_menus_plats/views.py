@@ -22,7 +22,7 @@ def ajouter_plat(request):
         form = PlatForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('nom_de_ta_vue_de_liste')
+            return redirect('gestion_menus_plats:ajouter_plat')
     else:
         form = PlatForm()
     return render(request, 'gestion_menus_plats/ajouter.html', {'form': form})
